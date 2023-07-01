@@ -20,10 +20,10 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'signup',
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USERNAME || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_DBNAME || 'signup',
 });
 
 const storage = multer.diskStorage({
